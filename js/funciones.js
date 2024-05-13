@@ -3,7 +3,7 @@ const formulario = document.querySelector("form");
 const inputText = document.querySelector('form input[type="text"]');
 
 //carga inicial de los datos
-fetch("http://localhost:4000/tareas")
+fetch("https://api-tareas-p2fu.onrender.com/tareas")
 .then(respuesta => respuesta.json())
 .then(tareas => {
     tareas.forEach(({id,tarea,terminada}) => {
@@ -18,7 +18,7 @@ formulario.addEventListener("submit", async evento => {
 
         let tarea = inputText.value.trim();
 
-        let {id,error} = await fetch("http://localhost:4000/tareas/nueva",{
+        let {id,error} = await fetch("https://api-tareas-p2fu.onrender.com/tareas/nueva",{
             method: "POST",
             body: JSON.stringify({tarea}),
             headers : {
